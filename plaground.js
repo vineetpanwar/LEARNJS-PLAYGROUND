@@ -670,77 +670,262 @@
 //4.8 ---> Grammer
 ************/
 
-if (!console.log("abc")) {
-  console.log("undefined");
-}
-var a, b;
-//not possible
-// a =  if(true){
-// 		b=48;
+// if (!console.log("abc")) {
+//   console.log("undefined");
 // }
-a = eval(" if(true){	b=48; }");
-console.log(a);
+// var a, b;
+// //not possible
+// // a =  if(true){
+// // 		b=48;
+// // }
+// a = eval(" if(true){	b=48; }");
+// console.log(a);
 
-//side effets
-a = 42;
-b = a++;
-console.log(a, b);
+// //side effets
+// a = 42;
+// b = a++;
+// console.log(a, b);
 
-a = 42;
-b = --a;
-console.log(a, b);
+// a = 42;
+// b = --a;
+// console.log(a, b);
 
-// console.log(++(++a));
-a = 42;
-b = (a++, a);
-console.log(b);
+// // console.log(++(++a));
+// a = 42;
+// b = (a++, a);
+// console.log(b);
 
-var obj = {
-  a: 42
-};
+// var obj = {
+//   a: 42
+// };
 
-console.log(obj.a);
-console.log(delete obj.a);
-console.log(obj.a);
+// console.log(obj.a);
+// console.log(delete obj.a);
+// console.log(obj.a);
 
-//function to match vowels in a string
-function voweli(str) {
-  var matches;
-  //pull out all the vowels
-  if (str && (matches = str.match(/[aeiou]/g))) {
-    return matches;
-  }
-}
+// //function to match vowels in a string
+// function voweli(str) {
+//   var matches;
+//   //pull out all the vowels
+//   if (str && (matches = str.match(/[aeiou]/g))) {
+//     return matches;
+//   }
+// }
 
-console.log(voweli("qqqq"));
-console.log(voweli("hello world"));
+// console.log(voweli("qqqq"));
+// console.log(voweli("hello world"));
 
-console.log({
-  foo: voweli()
-});
+// console.log({
+//   foo: voweli()
+// });
 
-//console.log(1 % 3);
+// //console.log(1 % 3);
 
-function JSONP(obj) {
-  console.log(obj);
-}
-JSONP({
-  a: 42
-});
-({} + []); //[] -> "" & {} -> [object Object]
-[] + {}; //[] -> "" & {} -> [object Object]
+// function JSONP(obj) {
+//   console.log(obj);
+// }
+// JSONP({
+//   a: 42
+// });
+// ({} + []); //[] -> "" & {} -> [object Object]
+// [] + {}; //[] -> "" & {} -> [object Object]
 
-//Object destrucutirng
-function destructured() {
-  return { a: 1, b: 2 };
-}
+// //Object destrucutirng
+// function destructured() {
+//   return { a: 1, b: 2 };
+// }
 
-var { a, b } = destructured();
+// var { a, b } = destructured();
 
-console.log(a, b);
+// console.log(a, b);
 
-//Operator precedence
+// //Operator precedence
 
-(a = 42), (b = 0);
-(b = a++), a;
-console.log(a, b);
+// (a = 42), (b = 0);
+// (b = a++), a;
+// console.log(a, b);
+
+//Associativity
+// console.log(true ? false : true ? true : true);
+// console.log((true ? false : true) ? true : true);
+
+// var a = true,
+//   b = false,
+//   c = true,
+//   d = true,
+//   e = false;
+
+// console.log(a ? b : c ? d : e);
+// console.log((a ? b : c) ? d : e);
+
+// //left associativity-&& , ||
+// //right associativity- = , ?
+// var a = (b = c = d = 42);
+// console.log(a, b, c, d);
+
+// //nostalgic but easy enough
+// (a = 42), (b = "foo"), (c = false);
+
+// var d = (a && b) || c ? (c || b ? a : c && b) : a;
+// console.log(d);
+
+// (function() {
+//   "use strict";
+//   console.log("vineet here");
+//   var a = {
+//     b: 42,
+//     b: 43
+//   };
+// })();
+
+// tingdu = 3;
+// var tingdu;
+// {
+//   pinku = 2;
+//   let pinku;
+// }
+
+// //function arguments
+// var b = 3;
+// function foo(a = 42, b = a + 5) {
+//   console.log(a, b, arguments);
+// }
+
+// foo();
+// foo(undefined);
+// foo(5);
+// foo(void 10, 7);
+// foo(null);
+
+// function fee(a) {
+//   "use strict";
+//   a = 42;
+//   console.log(arguments[0]);
+// }
+// fee(2);
+// function feo(a) {
+//   console.log(a + arguments[1]);
+// }
+// feo(2, 3);
+
+// //try catch cases
+// function foo() {
+//   try {
+//     return 42;
+//   } finally {
+//     console.log("in finaly");
+//   }
+//   console.log("never runs");
+// }
+
+// console.log(foo());
+
+// function foo() {
+//   try {
+//     throw 42;
+//   } finally {
+//     console.log("in finaly");
+//   }
+//   console.log("never runs");
+// }
+
+// console.log(foo());
+
+// try finally
+// function foo() {
+//   try {
+//     return 42;
+//   } finally {
+//     return 43;
+//   }
+//   console.log("it never runs");
+// }
+// console.log(foo());
+
+// function foo1() {
+//   try {
+//     return 42;
+//   } finally {
+//     throw 43;
+//   }
+//   console.log("it never runs");
+// }
+
+//console.log(foo1());
+// function foo2() {
+//   bar: {
+//     try {
+//       return 52;
+//     } finally {
+//       console.log("in finally");
+//       break bar;
+//     }
+//   }
+//   console.log("crazy");
+//   return "Hello";
+// }
+// console.log(foo2());
+
+//switch
+// var a = 42;
+// switch (a) {
+//   case 2:
+//     console.log("in 2");
+//     break;
+//   case 42:
+//     console.log("in 42");
+//     break;
+//   default:
+//     console.log("in default");
+//     break;
+// }
+
+// switch (a) {
+//   default:
+//     console.log("in default");
+//     break;
+//   case 2:
+//     console.log("in 2");
+//     break;
+//   case 42:
+//     console.log("in 42");
+//     break;
+// }
+
+// switch (a) {
+//   case 2:
+//     console.log("in 2");
+//     break;
+//   case 42:
+//     console.log("in 42");
+//   default:
+//     console.log("in default");
+//     break;
+// }
+
+// switch (true) {
+//   case a == 2:
+//     console.log("in 2");
+//     break;
+//   case a == 42:
+//     console.log("in 42");
+//     break;
+// }
+// var a = "hello world";
+// var b = 10;
+// switch (true) {
+//   case a || b == 10:
+//     console.log("here in case 1");
+//     break;
+//   default:
+//     console.log("oops!");
+// }
+
+// //multi[ple declaration and errors]
+// // const a = 4;
+// // const a = 5;
+// // let a = 4;
+// // let a = 5;
+// var a = 4;
+// var a = 5;
+// console.log(a);
