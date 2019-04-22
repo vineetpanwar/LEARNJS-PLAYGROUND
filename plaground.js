@@ -929,3 +929,107 @@
 // var a = 4;
 // var a = 5;
 // console.log(a);
+
+//hoisting
+
+// a = 2;
+// var a;
+// console.log(a);
+
+// a = 2;
+// let a;
+// console.log(a);
+
+// console.log(a);
+// var a = 2;
+
+// foo();
+// function foo() {
+//   console.log("hi");
+//   return 42;
+// }
+
+// foo1();
+// var foo1 = foo();
+
+//mutiple declaretions are ignored whereas wubsequent declaratiobs overrides the previous ones
+// foo();
+// var foo;
+// function foo() {
+//   console.log(1);
+// }
+
+// foo = function() {
+//   console.log(2);
+// };
+
+// foo();
+
+// function foo() {
+//   console.log(1);
+// }
+// var foo = function() {
+//   console.log(2);
+// };
+// function foo() {
+//   console.log(3);
+// }
+
+//closures
+for (var i = 0; i <= 5; i++) {
+  (function(j) {
+    setTimeout(() => {
+      console.log(j);
+    }, j * 1000);
+  })(i);
+}
+
+//Module IN JS? It is oftern called as revealing module
+function CoolModule() {
+  var something = "cool";
+  var another = [1, 2, 3];
+
+  function doSomething() {
+    console.log(something);
+  }
+  function doAnother() {
+    console.log(another.join("!"));
+  }
+  return {
+    //like an public api which exposes the method outside
+    doSomething: doSomething,
+    doAnother: doAnother
+  };
+}
+
+//chaning the module instance from inside and invoking them outside
+var foo = CoolModule();
+foo.doSomething();
+foo.doAnother();
+
+var feo = (function CoolModule(id) {
+  function change() {
+    publicAPI.identify = identify2;
+  }
+  function identify1() {
+    console.log(id);
+  }
+  function identify2() {
+    console.log(id.toUpperCase());
+  }
+  var publicAPI = {
+    change: change,
+    identify: identify1
+  };
+  return publicAPI;
+})("vineet");
+feo.identify();
+feo.change();
+feo.identify();
+
+function la(a) {
+  arguments[0] = 5;
+  console.log(arguments);
+}
+
+console.log(la(1));
